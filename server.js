@@ -8,6 +8,9 @@ const app = express();
     app.use(express.json());
     const transporter = nodemailer.createTransport({
       service: "gmail", 
+	  host:"smtp.gmail.com",
+	  port:587,
+	  secure:false,
       auth: {
         user: "sumityadavws@gmail.com",
         pass: "roxd hjln pidl ayzh"
@@ -15,8 +18,9 @@ const app = express();
     });
     app.post("/api/send", (req, res) => {
         const mail_configs = {
-            from: "contact@eximvay.com",
-            to: "myth.sumit@gmail.com",
+            from: {name: "EXIMVAY",
+		           address: "contact@vay.com"},
+            to: "yadavapoorva2@gmail.com",
             subject: `NEW ENQUIRY RECEIVED FROM - ${req.body.client}`,
             html: `<!DOCTYPE html>
       <html lang="en" >
